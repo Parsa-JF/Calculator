@@ -1,14 +1,17 @@
 function operate(operation, num1, num2)
 {
-    n1 = parseInt(num1);
-    n2 = parseInt(num2);
+    n1 = parseFloat(num1);
+    n2 = parseFloat(num2);
+    
     switch(operation)
     {
-        case "\+": return n1 + n2;
-        case "-": return n1 - n2;
-        case "\*": return n1 * n2;
-        case "\/": return (n1 / n2).toFixed(9);
+        
+        case "\+": return  (n1 + n2).toFixed(3).replace(/[.,]000$/, "");
+        case "-": return (n1 - n2).toFixed(3).replace(/[.,]000$/, "");
+        case "\*": return (n1 * n2).toFixed(3).replace(/[.,]000$/, "");
+        case "\/": return (n1 / n2).toFixed(3).replace(/[.,]000$/, "");
     }
+    
 }
 
 
@@ -18,11 +21,12 @@ var displayBox = document.querySelector(".displayBox");
 var displayContent = "0";
 function updateDisplayBox(s)
 {
-    if(displayContent.length < 9)
+    if(displayContent < 999999999)
     {
         if(displayContent == "0"){displayContent = "";}
         displayContent+=s;
         displayBox.textContent = displayContent; 
+        console.log(displayContent)
     }
 }
 
@@ -72,6 +76,7 @@ function clearcalc()
     operator = "null";
     displayBox.textContent = "0";
     displayContent = "";
+    miniBox.textContent = "CLEAR";
 }
 
 
@@ -86,7 +91,7 @@ opButtons.forEach((button) =>
             if(num1 == "null")
             {
                 operator = button.textContent;
-                num1 = displayContent;
+                num1 = displayBox.textContent;
                 displayContent = "0";
                 
                 console.log(num1+" "+operator+" "+num2)
@@ -94,15 +99,23 @@ opButtons.forEach((button) =>
             else if(num2 == "null")
             {
   
-                num2 = displayContent;
+                num2 = displayBox.textContent;
                 console.log("(1)" + num1+" "+operator+" "+num2);
                 miniBox.textContent = num1+" "+operator+" "+num2;
                 num1 = operate(operator, num1, num2);
+                if(num1<999999999)
+                {
                 displayBox.textContent = num1;
                 displayContent= "0";
                 num2 = "null";
                 operator = button.textContent;
                 console.log("(1)" + num1+" "+operator+" "+num2)
+                }
+                else
+                {
+                    displayBox.textContent = "ERR Overflow";
+                    miniBox.textContent = "press C to reset"
+                }
             }
         }
         else
@@ -113,12 +126,20 @@ opButtons.forEach((button) =>
                 console.log("(2)" + num1+" "+operator+" "+num2);
                 miniBox.textContent = num1+" "+operator+" "+num2;
                 num1 = operate(operator, num1, num2);
+                if(-999999999<num1 && num1<999999999)
+                {
                 displayBox.textContent = num1;
-                displayContent = num1;
+                displayContent = 0;
                 num1 = "null";
                 num2 = "null";
                 operator = "null"
                 console.log("(2)" + num1+" "+operator+" "+num2);
+                }
+                else
+                {
+                    displayBox.textContent = "ERR Overflow";
+                    miniBox.textContent = "press C to reset"
+                }
             }
         }
 

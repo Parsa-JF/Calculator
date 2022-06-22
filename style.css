@@ -33,26 +33,29 @@ body{
     height: 53vh;
     width: 40vh;
     background-color: #8458b3;
-    border:2vh solid #8458b3;
+    border:1vh solid #8458b3;
     border-radius:5px;
+    padding-top:2vh;    
+    padding-bottom: 1vh;
 }
 
 .top{
     
-    background-color: #a0d2eb;
+    background-color: #D0Bdf4;
     height: 13vh;
     width: 40vh;
     display:flex;
     flex-direction: column;
     text-align: right;
-    margin-bottom: 2vh;
+    margin-bottom: 1vh;
     border-radius: .5vh;
 
 }
 
 .displayBox{
-    font-size: 50px;
-    margin-right: 3vh
+    font-size: 5vh;
+    margin-right: 3vh;
+
 }
 
 .miniBox{
@@ -112,4 +115,14 @@ button{
 #bEQ, #bC{
     background-color: #ffa8b6;
     color:#e5eaf5
+}
+
+a{
+    padding : 5vh;
+    text-decoration: none;
+    color: lightskyblue;
+}
+
+button:active{
+    opacity: 70%;
 }
