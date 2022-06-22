@@ -58,18 +58,20 @@ numButtons.forEach((button) =>
 var num1 = "null"; 
 var num2 = "null";
 var operator = "null";
-var result = 0;
 
 
-
-function clearcalc(x)
+clearBtn.addEventListener('click', function(e)
 {
-    switch(x)
-    {
-        case "num1": num1 = "unassigned"; 
-        case "num2": num2 = "unassigned";
-        case "num3": operator = "unassigned";
-    }
+    clearcalc();
+})
+
+function clearcalc()
+{
+    num1 = "null";
+    num2 = "null";
+    operator = "null";
+    displayBox.textContent = "0";
+    displayContent = "";
 }
 
 
@@ -86,7 +88,7 @@ opButtons.forEach((button) =>
                 operator = button.textContent;
                 num1 = displayContent;
                 displayContent = "0";
-                displayBox.textContent = "0";
+                
                 console.log(num1+" "+operator+" "+num2)
             }
             else if(num2 == "null")
@@ -118,56 +120,6 @@ opButtons.forEach((button) =>
                 console.log("(2)" + num1+" "+operator+" "+num2);
             }
         }
-    
 
-
-        //old code
-
-        /*if(button.textContent != "=")
-        {
-            if(num1 == 0)
-            {
-                num1 = parseInt(displayContent);
-                num2 = 0;
-                displayContent = "0";
-                operator = button.textContent;
-                console.log("if" +num1 + " " + num2 + " " + operator)
-                
-            }
-            else if(num2 == 0)
-            {
-                num2 = parseInt(displayContent);
-                num1 = operate(operator, num1, num2);
-                displayBox.textContent = num1;
-                num2 = 0;
-                displayContent = "0";
-                console.log("else if"+num1 + " " + num2 + " " + operator)
-                operator = button.textContent;
-
-            }
-            else
-            {
-                console.log(operate(operator, num1, num2))
-                num1 = operate(operator, num1, num2);
-                displayBox.textContent = num1;
-                num2 = 0;
-                displayContent = "0";
-                operator = button.textContent;
-                console.log("else"+num1 + " " + num2 + " " + operator)
-            }
-
-            
-        }
-
-        else
-        {
-            num2 = parseInt(displayContent);
-            console.log(num1 + " " + num2 + " " + operator)
-            console.log(operate(operator, num1, num2))
-            num1 = operate(operator, num1, num2);
-            displayBox.textContent = num1;
-            num2 = 0;
-            displayContent = "0";
-        }*/ 
     })
 })

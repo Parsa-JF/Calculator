@@ -1,3 +1,115 @@
-.calcbutton{
-    margin:5px
+body{
+    background-color: #494d5f;
+    color: #e5eaf5;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    display: flex;
+    padding-top: 10vh;
+    flex-direction: column;
+    align-items: center;
+    padding-top:0px;
+    margin-top:0px;
+
+}
+
+.header{
+    background-color: #e5eaf5;
+    color:#494d5f;
+    margin:0px;
+    flex:1;
+    width:100vw;
+    margin-bottom:5vh;
+    padding-bottom:10px;
+    padding-top: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calc{
+    display:flex;
+    flex-direction: column;
+    height: 53vh;
+    width: 40vh;
+    background-color: #8458b3;
+    border:2vh solid #8458b3;
+    border-radius:5px;
+}
+
+.top{
+    
+    background-color: #a0d2eb;
+    height: 13vh;
+    width: 40vh;
+    display:flex;
+    flex-direction: column;
+    text-align: right;
+    margin-bottom: 2vh;
+    border-radius: .5vh;
+
+}
+
+.displayBox{
+    font-size: 50px;
+    margin-right: 3vh
+}
+
+.miniBox{
+    margin-right:3vh;
+}
+
+.calcbox{
+    display: flex;
+    background-color: #8458b3;
+    flex:1;
+    justify-content: space-between;
+
+}
+.numbox{
+    flex:1;
+}
+
+.operators{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.numbutton{
+    flex:1;
+}
+
+
+.rowofthree{
+    margin:0px;
+    padding:0px;
+    display:flex;
+    align-items:left;
+}
+
+
+button{
+    border: none;
+    background-color: #D0Bdf4;
+    color:#e5eaf5;
+    font-weight: bold;
+    padding: 5px;
+    margin: 0px;
+    width: 10vh;
+    height:10vh;
+    margin:0px;
+    font-size:3vh;
+    border: 2px solid #8458b3;
+    border-radius:.5vh;
+}
+
+.opbutton{
+    background-color: black;
+    color:#e5eaf5
+}
+
+#bEQ, #bC{
+    background-color: #ffa8b6;
+    color:#e5eaf5
 }
