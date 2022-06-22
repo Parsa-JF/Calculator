@@ -1,13 +1,13 @@
 function operate(operation, num1, num2)
 {
-    n1 = parseFloat(num1);
-    n2 = parseFloat(num2);
+    n1 = parseInt(num1);
+    n2 = parseInt(num2);
     switch(operation)
     {
         case "\+": return n1 + n2;
         case "-": return n1 - n2;
         case "\*": return n1 * n2;
-        case "\/": return n1 / n2;
+        case "\/": return (n1 / n2).toFixed(9);
     }
 }
 
@@ -117,6 +117,7 @@ opButtons.forEach((button) =>
                 displayContent = num1;
                 num1 = "null";
                 num2 = "null";
+                operator = "null"
                 console.log("(2)" + num1+" "+operator+" "+num2);
             }
         }
