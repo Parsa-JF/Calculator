@@ -1,13 +1,17 @@
 function operate(operation, num1, num2)
 {
+    n1 = parseFloat(num1);
+    n2 = parseFloat(num2);
     switch(operation)
     {
-        case "\+": return num1+num2;
-        case "-": return num1 - num2;
-        case "\*": return num1 * num2;
-        case "\/": return num1/num2;
+        case "\+": return n1 + n2;
+        case "-": return n1 - n2;
+        case "\*": return n1 * n2;
+        case "\/": return n1 / n2;
     }
 }
+
+
 
 var displayBox = document.querySelector(".displayBox");
 
@@ -42,7 +46,7 @@ const addBtn = document.querySelector("#addButton");
 const subBtn = document.querySelector("#subtractButton");
 const multBtn = document.querySelector("#multiplyButton");
 const divBtn = document.querySelector("#divideButton");
-
+var miniBox = document.querySelector('.miniBox')
 
 var numButtons = document.querySelectorAll('.numbutton');
 
@@ -51,10 +55,12 @@ numButtons.forEach((button) =>
     button.addEventListener('click', function(e){updateDisplayBox(button.textContent)})
 })
 
-var num1 = 0; 
-var num2 = 0;
-var operator = "unassigned";
+var num1 = "null"; 
+var num2 = "null";
+var operator = "null";
 var result = 0;
+
+
 
 function clearcalc(x)
 {
@@ -74,6 +80,50 @@ opButtons.forEach((button) =>
     button.addEventListener('click', function(e)
     {
         if(button.textContent != "=")
+        {
+            if(num1 == "null")
+            {
+                operator = button.textContent;
+                num1 = displayContent;
+                displayContent = "0";
+                displayBox.textContent = "0";
+                console.log(num1+" "+operator+" "+num2)
+            }
+            else if(num2 == "null")
+            {
+  
+                num2 = displayContent;
+                console.log("(1)" + num1+" "+operator+" "+num2);
+                miniBox.textContent = num1+" "+operator+" "+num2;
+                num1 = operate(operator, num1, num2);
+                displayBox.textContent = num1;
+                displayContent= "0";
+                num2 = "null";
+                operator = button.textContent;
+                console.log("(1)" + num1+" "+operator+" "+num2)
+            }
+        }
+        else
+        {
+            if((operator != "null"))
+            {
+                num2 = displayContent;
+                console.log("(2)" + num1+" "+operator+" "+num2);
+                miniBox.textContent = num1+" "+operator+" "+num2;
+                num1 = operate(operator, num1, num2);
+                displayBox.textContent = num1;
+                displayContent = num1;
+                num1 = "null";
+                num2 = "null";
+                console.log("(2)" + num1+" "+operator+" "+num2);
+            }
+        }
+    
+
+
+        //old code
+
+        /*if(button.textContent != "=")
         {
             if(num1 == 0)
             {
@@ -105,7 +155,10 @@ opButtons.forEach((button) =>
                 operator = button.textContent;
                 console.log("else"+num1 + " " + num2 + " " + operator)
             }
-        }   
+
+            
+        }
+
         else
         {
             num2 = parseInt(displayContent);
@@ -115,6 +168,6 @@ opButtons.forEach((button) =>
             displayBox.textContent = num1;
             num2 = 0;
             displayContent = "0";
-        }
+        }*/ 
     })
 })
